@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Final · 140 Practice Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #f5efe4;
+    --cream: #faf6ed;
+    --ink: #1a2332;
+    --ink-soft: #2d3a4d;
+    --burgundy: #8b2635;
+    --burgundy-soft: #a84556;
+    --mustard: #d4a04a;
+    --mustard-soft: #e8c278;
+    --sage: #6b8e5a;
+    --coral: #e07856;
+    --paper: #efe7d6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 140px; }
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    background-image:
+      radial-gradient(circle at 15% 5%, rgba(212,160,74,0.1) 0%, transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(139,38,53,0.08) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+  .display { font-family: 'Fraunces', serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ============ HEADER ============ */
+  header.top {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1.5px solid var(--ink);
+    backdrop-filter: blur(6px);
+  }
+  .top-row1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 28px 8px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+  .brand::before {
+    content: "";
+    width: 10px; height: 10px;
+    background: var(--burgundy);
+    border-radius: 50%;
+  }
+  .brand em { font-style: italic; font-weight: 400; color: var(--burgundy); }
+  .global-stats {
+    margin-left: auto;
+    display: flex;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .global-stats .stat {
+    padding: 6px 12px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+  }
+  .global-stats .stat b { color: var(--burgundy); font-size: 13px; }
+
+  .chapter-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 6px 28px 10px;
+    scrollbar-width: none;
+  }
+  .chapter-tabs::-webkit-scrollbar { display: none; }
+  .ctab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 8px 14px;
+    border: 1.5px solid var(--ink);
+    background: var(--ivory);
+    color: var(--ink);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  .ctab:hover { background: var(--ink); color: var(--cream); }
+  .ctab.active { background: var(--burgundy); color: var(--cream); border-color: var(--burgundy); }
+  .ctab .num { font-weight: 700; }
+  .ctab .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--ink);
+    opacity: 0.25;
+  }
+  .ctab.done .dot { background: var(--sage); opacity: 1; }
+  .ctab.active .dot { background: var(--mustard); opacity: 1; }
+
+  /* ============ LAYOUT ============ */
+  main { max-width: 1100px; margin: 0 auto; padding: 40px 28px 120px; }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 50px 40px;
+    margin: 0 0 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1.5px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--burgundy);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: var(--mustard);
+    border-radius: 50%;
+    opacity: 0.18;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 140px; height: 140px;
+    background: var(--burgundy);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--mustard);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-title em { font-style: italic; color: var(--mustard); font-weight: 400; }
+  .hero-sub {
+    font-size: 16px;
+    max-width: 640px;
+    opacity: 0.85;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-how {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    border-top: 1px solid rgba(250,246,237,0.2);
+    padding-top: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-how .how {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .hero-how .how b {
+    color: var(--mustard);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
+  /* ============ CHAPTER HEAD ============ */
+  .chapter-head {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px dashed var(--ink);
+  }
+  .ch-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(80px, 12vw, 140px);
+    line-height: 0.8;
+    color: var(--burgundy);
+    letter-spacing: -0.04em;
+  }
+  .ch-meta { flex: 1; }
+  .ch-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .ch-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .ch-name::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--mustard);
+    margin-top: 14px;
+  }
+  .ch-subject {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+  .ch-progress {
+    font-family: 'JetBrains Mono', monospace;
+    text-align: right;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .ch-progress .big {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    line-height: 1;
+  }
+  .ch-progress .big b { color: var(--burgundy); }
+
+  /* ============ QUESTIONS ============ */
+  .question {
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform 0.12s;
+  }
+  .question:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--burgundy);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .q-num .status {
+    color: var(--ink-soft);
+    font-weight: 400;
+    font-size: 10px;
+  }
+  .q-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option {
+    background: var(--ivory);
+    border: 1.5px solid var(--ink);
+    padding: 12px 16px;
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.12s;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.4;
+  }
+  .option:hover { background: var(--paper); }
+  .option.selected { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .option.correct { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+  .option.incorrect { background: var(--burgundy); color: var(--cream); border-color: var(--burgundy); }
+  .option .letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 12px;
+    opacity: 0.7;
+    flex-shrink: 0;
+    width: 16px;
+  }
+  .option.selected .letter, .option.correct .letter, .option.incorrect .letter { opacity: 1; }
+
+  .explanation {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border-left: 3px solid var(--mustard);
+    font-size: 13px;
+    display: none;
+    line-height: 1.55;
+  }
+  .explanation.show { display: block; }
+  .explanation .explain-label {
+    color: var(--burgundy);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .explanation strong { color: var(--ink); }
+
+  /* ============ CONTROLS ============ */
+  .controls {
+    position: sticky;
+    bottom: 0;
+    background: var(--ivory);
+    border-top: 1.5px solid var(--ink);
+    padding: 16px 0;
+    margin: 32px -28px -120px;
+    padding: 20px 28px;
+    z-index: 50;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 14px 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid var(--ink);
+    cursor: pointer;
+    transition: all 0.12s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary { background: var(--burgundy); color: var(--cream); border-color: var(--burgundy); }
+  .btn-primary:hover { background: var(--ink); border-color: var(--ink); }
+  .btn-secondary { background: transparent; color: var(--ink); }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+  .btn-mustard { background: var(--mustard); color: var(--ink); border-color: var(--ink); }
+  .btn-mustard:hover { background: var(--ink); color: var(--mustard); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .ch-counter {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .ch-counter b { color: var(--burgundy); font-weight: 600; font-size: 14px; }
+
+  /* ============ RESULTS ============ */
+  .results {
+    display: none;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px;
+    margin-top: 32px;
+    border: 2px solid var(--mustard);
+    position: relative;
+    overflow: hidden;
+  }
+  .results::before {
+    content: "";
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: var(--mustard);
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+  .results.show { display: block; }
+  .results-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--mustard);
+    margin-bottom: 8px;
+  }
+  .score-display {
+    font-family: 'Fraunces', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--mustard);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .score-display .total { font-size: 0.4em; opacity: 0.5; font-weight: 400; }
+  .score-msg {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    margin-top: 12px;
+    max-width: 600px;
+  }
+  .score-breakdown {
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .score-breakdown span b { color: var(--mustard); font-size: 14px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    text-align: center;
+    padding: 40px 20px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+  }
+  footer::before {
+    content: "◇ ◇ ◇";
+    display: block;
+    color: var(--burgundy);
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 700px) {
+    .top-row1 { padding: 12px 16px 6px; flex-wrap: wrap; }
+    .chapter-tabs { padding: 6px 16px 10px; }
+    main { padding: 28px 16px 120px; }
+    .hero { padding: 32px 24px; }
+    .chapter-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .ch-num { font-size: 72px; }
+    .question { padding: 20px; }
+    .controls { padding: 16px; margin: 24px -16px -120px; }
+    .global-stats { font-size: 10px; }
+    .global-stats .stat { padding: 4px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-row1">
+    <div class="brand">Marketing <em>Finals</em> · 140 Practice Q's</div>
+    <div class="global-stats">
+      <div class="stat">ANSWERED <b id="statAnswered">0</b></div>
+      <div class="stat">CORRECT <b id="statCorrect">0</b></div>
+      <div class="stat">CHAPTERS <b id="statChapters">0</b>/7</div>
+    </div>
+  </div>
+  <div class="chapter-tabs" id="chapterTabs"></div>
+</header>
+
+<main>
+
+<div class="hero" id="heroSection">
+  <div class="hero-label">★ PRINCIPLES OF MARKETING · FINAL EXAM DRILL</div>
+  <h1 class="hero-title display">20 questions<br>per chapter. <em>Drill till it sticks.</em></h1>
+  <p class="hero-sub">Seven chapters, twenty questions each — 140 exam-style multiple choice items built directly from the Armstrong & Kotler syllabus. Pick a chapter to start. Each submission shows your score and a full explanation for every question.</p>
+  <div class="hero-how">
+    <div class="how"><b>01 · PICK</b>A chapter from the tabs above.</div>
+    <div class="how"><b>02 · ANSWER</b>All 20 questions load at once.</div>
+    <div class="how"><b>03 · SUBMIT</b>See score + every explanation.</div>
+    <div class="how"><b>04 · REPEAT</b>Re-do any chapter to reinforce.</div>
+  </div>
+</div>
+
+<div id="chapterContent"></div>
+
+<div class="controls" id="controls" style="display:none;">
+  <button class="btn btn-primary" id="submitBtn">Submit Chapter →</button>
+  <button class="btn btn-secondary" id="resetBtn" style="display:none;">↻ Retake</button>
+  <button class="btn btn-mustard" id="nextChapterBtn" style="display:none;">Next Chapter →</button>
+  <div class="ch-counter"><b id="selectedCount">0</b> / 20 answered</div>
+</div>
+
+<div class="results" id="results">
+  <div class="results-label">CHAPTER RESULTS</div>
+  <div class="score-display"><span id="scoreNum">0</span><span class="total">/20</span></div>
+  <div class="score-msg" id="scoreMsg"></div>
+  <div class="score-breakdown">
+    <span>CORRECT <b id="rCorrect">0</b></span>
+    <span>INCORRECT <b id="rWrong">0</b></span>
+    <span>PERCENT <b id="rPct">0%</b></span>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  140 QUESTIONS · 7 CHAPTERS · ARMSTRONG &amp; KOTLER · PRINCIPLES OF MARKETING, 11e
+</footer>
+
+<script>
+/* ============ QUESTION BANK (140 total, 20 per chapter) ============ */
+const CHAPTERS = [
+  { id: 8, title: "New Products & Product Life-Cycle", subtitle: "Ideas, screening, launch, and the sales curve.", questions: [
+    {q:"Which of the following BEST defines new-product development?",o:["Acquiring existing products from other companies","Developing original products, improvements, modifications, and new brands through the firm's own efforts","Repackaging existing products with new branding","Licensing products from international markets"],a:1,e:"NPD refers to the firm's own efforts — original products, improvements, modifications, and new brands."},
+    {q:"Which is NOT typically a major reason new products fail?",o:["Overestimation of market size","Incorrect pricing or positioning","Competitor reaction","Excessive market research"],a:3,e:"Too much research isn't a standard failure cause — usually the opposite. Main causes: overestimated market size, design problems, pricing/positioning, high dev costs, competitor reaction."},
+    {q:"Which is an INTERNAL source of new product ideas?",o:["Customers","Competitors","Intrapreneurs within the company","Distributors"],a:2,e:"Internal sources: R&D, intrapreneurs, other employees. External: customers, competitors, distributors, suppliers."},
+    {q:"The purpose of idea screening is to:",o:["Generate more new product ideas","Spot good ideas and drop poor ones as early as possible","Test the product in real markets","Launch the product"],a:1,e:"Idea screening filters out poor ideas early — before expensive development begins."},
+    {q:"The difference between a product IDEA and a product CONCEPT is:",o:["There is no difference","A product idea is a possibility; a concept is a detailed version in meaningful consumer terms","A concept comes before an idea","A concept is the physical prototype"],a:1,e:"Idea = possibility. Concept = detailed version in consumer-meaningful language. Image = how consumers perceive it."},
+    {q:"During the business analysis step, marketers review:",o:["Product designs","Sales, costs, and profit projections","Advertising copy","Channel partners"],a:1,e:"Business analysis reviews projected sales, costs, and profits to see if the product will meet objectives."},
+    {q:"Which step in NPD involves testing the product in realistic market settings?",o:["Commercialization","Test marketing","Concept development","Product development"],a:1,e:"Test marketing evaluates the product and full marketing program in real market settings before full launch."},
+    {q:"Commercialization is the stage where:",o:["Concepts are tested with consumers","The new product is introduced into the market","Ideas are screened","Business projections are made"],a:1,e:"Commercialization = actual market launch — the final NPD stage."},
+    {q:"Including product development, the Product Life Cycle has how many stages?",o:["3","4","5","6"],a:2,e:"Five stages: product development → introduction → growth → maturity → decline."},
+    {q:"Sales during the INTRODUCTION stage are typically:",o:["High and rising rapidly","Low","At their peak","Declining"],a:1,e:"Introduction = low sales, negative or no profits, slow consumer acceptance."},
+    {q:"At which PLC stage are profits typically at their PEAK?",o:["Introduction","Growth","Maturity","Decline"],a:2,e:"Profits peak in maturity due to efficient scale and accumulated volume."},
+    {q:"During the GROWTH stage, competition typically:",o:["Is minimal","Increases as new entrants are attracted by opportunity","Is already saturated","Is declining"],a:1,e:"Growth attracts competitors who see profit potential, so competition rises."},
+    {q:"The strategies to 'modify the market, modify the product, or modify the marketing mix' are characteristic of which stage?",o:["Introduction","Growth","Maturity","Decline"],a:2,e:"Maturity calls for modification strategies to extend the product's profitable life."},
+    {q:"During the DECLINE stage, the marketing objective typically shifts to:",o:["Build primary demand","Maximize market share","Reduce expenditures and milk the brand","Launch new features"],a:2,e:"Decline = minimize spend, milk remaining value, or phase out weak items."},
+    {q:"In marketing, a STYLE refers to:",o:["A currently popular fashion","A product with a short cycle","A basic and distinctive mode of expression","A product that only lasts one season"],a:2,e:"Style = basic/distinctive mode of expression (art, clothing, architecture). Fashion = currently popular style. Fad = short burst."},
+    {q:"A FAD differs from a fashion in that:",o:["Fads last longer","Fads have a longer growth stage","Fads have an unusually short life cycle — quick popularity, quick decline","Fads target older markets"],a:2,e:"Fads come in fast and go out fast — very short PLC burst."},
+    {q:"Which describes PERSUASIVE advertising?",o:["Used at introduction to build primary demand","Used for mature products to maintain awareness","Important as competition increases — builds selective demand","Only used in B2B"],a:2,e:"Persuasive advertising builds SELECTIVE demand for a specific brand, important when competition intensifies."},
+    {q:"REMINDER advertising is most important at which PLC stage?",o:["Introduction","Growth","Maturity","Decline"],a:2,e:"Reminder advertising keeps mature products top-of-mind among loyal customers."},
+    {q:"In international product marketing, a company can either:",o:["Standardize products across markets, or adapt them to local tastes","Use only direct or only indirect marketing","Use only push or only pull strategy","Use only cost-plus or markup pricing"],a:0,e:"International firms choose between standardization and adaptation depending on culture, regulation, and taste."},
+    {q:"Socially responsible new-product decisions must consider:",o:["Product safety and warranties","Only the bottom line","Only competitor actions","Only patent protection"],a:0,e:"Responsible NPD weighs public policy, regulations, patent protection, product quality, safety, and warranties."}
+  ]},
+  { id: 9, title: "Pricing — Capturing Customer Value", subtitle: "Strategies, adjustments, and initiating changes.", questions: [
+    {q:"Which element of the marketing mix is the ONLY one that produces revenue?",o:["Product","Place","Promotion","Price"],a:3,e:"All other Ps generate costs. Only Price generates revenue."},
+    {q:"Setting prices based on buyers' perceptions of value rather than on seller's cost is:",o:["Cost-based pricing","Customer value-based pricing","Competition-based pricing","Markup pricing"],a:1,e:"Customer value-based pricing anchors on perceived value, not on cost."},
+    {q:"Which is NOT one of the three major pricing strategies?",o:["Customer value-based","Cost-based","Competition-based","Demand-based"],a:3,e:"The three major strategies are value-based, cost-based, and competition-based. 'Demand-based' isn't one of them."},
+    {q:"The price CEILING is set by:",o:["Product costs","Competitor prices","Customer value perceptions","Government regulation"],a:2,e:"Customer value perceptions set the ceiling. Product costs set the floor."},
+    {q:"GOOD-VALUE pricing refers to:",o:["Adding features to charge more","Offering the right combination of quality and service at a fair price","Continually reducing price","Charging a luxury premium"],a:1,e:"Good-value pricing = right quality + service at fair price. Value-added pricing adds features to differentiate and justify higher price."},
+    {q:"Adding a standard markup to the cost of the product is called:",o:["Cost-plus pricing","Target-return pricing","Value-based pricing","Break-even pricing"],a:0,e:"Cost-plus pricing = add markup to unit cost. Simple but ignores demand and competition."},
+    {q:"Break-even or target-profit pricing sets the price to:",o:["Cover exact variable costs only","Cover costs of making/marketing OR achieve a target profit","Match competitor prices","Skim the market"],a:1,e:"Break-even/target profit pricing sets price to break even or hit a specific profit target."},
+    {q:"Setting a HIGH initial price to 'skim' revenue layer by layer is:",o:["Market-penetration pricing","Market-skimming pricing","Psychological pricing","Promotional pricing"],a:1,e:"Skimming = high initial price, then lowered over time. Apple's iPhone launches fit this."},
+    {q:"Market-penetration pricing works BEST when:",o:["The market is price-inelastic","The market is highly price-sensitive","Quality signals are important","Competitors can't enter"],a:1,e:"Penetration works when the market is price-sensitive AND the low price keeps competitors out."},
+    {q:"A printer company sells printers cheaply but charges premium for ink cartridges. This is:",o:["Optional-product pricing","Captive-product pricing","Product bundle pricing","By-product pricing"],a:1,e:"Captive products must be used with a main product (razors/blades, printers/ink, consoles/games)."},
+    {q:"Packaging a flight + hotel + rental car as one 'vacation deal' is:",o:["By-product pricing","Captive-product pricing","Product bundle pricing","Product line pricing"],a:2,e:"Bundling combines products into a single reduced price."},
+    {q:"A fast-food restaurant offering burger + fries + drink as one 'combo meal' uses:",o:["Product line pricing","Product bundle pricing","Optional-product pricing","Captive-product pricing"],a:1,e:"Combo meals are classic product bundle pricing."},
+    {q:"A car dealer offers base, deluxe, and premium trims at ascending prices. This is:",o:["Product line pricing","Segmented pricing","Optional-product pricing","By-product pricing"],a:0,e:"Product line pricing = price steps between items in a line based on cost, evaluation, and competitor prices."},
+    {q:"Charging two+ prices for the same product based on customer segment, form, location, or time is:",o:["Psychological pricing","Segmented pricing","Dynamic pricing","Promotional pricing"],a:1,e:"Segmented pricing: different prices NOT based on cost differences."},
+    {q:"Why does $9.99 feel meaningfully cheaper than $10.00?",o:["Reference pricing","Psychological pricing","Segmented pricing","Dynamic pricing"],a:1,e:"Psychological pricing uses price to say something about the product — $9.99 psychologically feels much less than $10."},
+    {q:"PROMOTIONAL pricing tools include all EXCEPT:",o:["Discounts","Cash rebates","Longer warranties","FOB-origin pricing"],a:3,e:"FOB-origin is geographical pricing, not promotional. Promotional tools: discounts, special events, rebates, low-interest financing, longer warranties."},
+    {q:"FOB-origin, uniform-delivered, zone, and freight-absorption pricing are all types of:",o:["Psychological pricing","Geographical pricing","Segmented pricing","Dynamic pricing"],a:1,e:"Geographical pricing addresses how prices vary across locations."},
+    {q:"Priceline.com's 'name your own price' exemplifies:",o:["Fixed pricing","Segmented pricing","Dynamic pricing","Promotional pricing"],a:2,e:"Dynamic pricing adjusts continually to individual customers/situations — especially online."},
+    {q:"A reason to INITIATE a price cut could be:",o:["Cost inflation","Overdemand","Excess capacity or falling demand","High development costs"],a:2,e:"Price cuts triggered by excess capacity, falling demand, or a strategic bid to dominate via lower costs."},
+    {q:"When facing a discount competitor, a firm launches a lower-priced alternative brand without cutting its main brand's price. This is:",o:["Reducing price on all offerings","Launching a fighter brand","Increasing advertising only","Improving quality"],a:1,e:"Fighter brands = lower-priced alternative brands used to defend against discount competitors without damaging the main brand's positioning."}
+  ]},
+  { id: 10, title: "Marketing Channels & Value Delivery", subtitle: "Getting product from producer to consumer.", questions: [
+    {q:"A marketing channel is a:",o:["Set of independent consumers","Set of interdependent organizations that help make a product available","Physical transportation system","Retail store"],a:1,e:"Channel = interdependent organizations making product available for use/consumption."},
+    {q:"In a supply chain, UPSTREAM refers to:",o:["Channel partners linking firm to customer","Firms that supply raw materials/components to create the product","Retailers","End consumers"],a:1,e:"Upstream = suppliers of inputs. Downstream = channel partners linking firm to customer."},
+    {q:"The value delivery network includes:",o:["Only the company's employees","The company, suppliers, distributors, and customers partnering together","Only retailers and consumers","Only advertisers"],a:1,e:"VDN = all the partners who together deliver value through the whole system."},
+    {q:"A key efficiency argument for using intermediaries is:",o:["They always lower the final price","They reduce the number of channel transactions needed","They eliminate production","They increase raw material costs"],a:1,e:"Figure 10.1 shows intermediaries drastically reduce required transaction counts between producers and consumers."},
+    {q:"Which is NOT a transaction-COMPLETION function of channel members?",o:["Information","Promotion","Matching","Physical distribution"],a:3,e:"Physical distribution is a transaction FULFILLMENT function (with financing and risk-taking). Completion: info, promotion, contact, matching, negotiation."},
+    {q:"A channel with NO intermediary levels is a:",o:["Direct marketing channel","Indirect marketing channel","Horizontal channel","Vertical channel"],a:0,e:"Direct channel = producer straight to consumer, zero intermediaries."},
+    {q:"Producer → Wholesaler → Retailer → Consumer has how many channel levels?",o:["1","2","3","4"],a:1,e:"Channel levels count intermediary layers. Wholesaler + retailer = 2 levels."},
+    {q:"Conflict between two Coca-Cola bottlers in the same region is:",o:["Vertical conflict","Horizontal conflict","Channel conflict","Multichannel conflict"],a:1,e:"Horizontal conflict = same level. Vertical = different levels."},
+    {q:"A Vertical Marketing System where one member owns the others is:",o:["Contractual VMS","Corporate VMS","Administered VMS","Horizontal MS"],a:1,e:"Corporate VMS = combines successive channel stages under single ownership."},
+    {q:"McDonald's franchise system is an example of a(n):",o:["Corporate VMS","Contractual VMS","Administered VMS","Conventional channel"],a:1,e:"Franchise systems are contractual VMS — independent firms linked via contracts."},
+    {q:"When P&G dominates shelf space through size and power without formal contracts, this is:",o:["Corporate VMS","Contractual VMS","Administered VMS","Horizontal MS"],a:2,e:"Administered VMS = leadership via size/power of one dominant member, not ownership or contract."},
+    {q:"McDonald's locations inside Walmart stores illustrate:",o:["Vertical MS","Horizontal MS","Multichannel","Conventional"],a:1,e:"Horizontal MS = two+ unrelated companies at the same level joining to pursue an opportunity."},
+    {q:"A single firm using physical stores + online + catalog to reach customers is:",o:["Vertical MS","Horizontal MS","Multichannel distribution","Disintermediation"],a:2,e:"Multichannel = one firm using multiple channels to reach segments."},
+    {q:"When new channels bypass traditional resellers (Dell selling direct), this is:",o:["Disintermediation","Reintermediation","Multichannel","Vertical integration"],a:0,e:"Disintermediation = cutting out existing channel intermediaries."},
+    {q:"Toothpaste sold in every possible outlet uses:",o:["Exclusive distribution","Selective distribution","Intensive distribution","Direct distribution"],a:2,e:"Intensive = max availability, typical for convenience goods like toothpaste, candy, Coca-Cola."},
+    {q:"A luxury watch brand giving one exclusive dealer per territory uses:",o:["Intensive","Selective","Exclusive","Multi-channel"],a:2,e:"Exclusive distribution = limited dealers with exclusive rights, typical for luxury goods."},
+    {q:"Using more than one but fewer than all intermediaries willing to carry the product is:",o:["Intensive","Selective","Exclusive","Direct"],a:1,e:"Selective distribution fits shopping goods like TVs, appliances, furniture."},
+    {q:"Channel design decisions include analyzing consumer needs, setting objectives, identifying alternatives, and:",o:["Hiring salespeople","Evaluating alternatives","Lowering prices","Testing products"],a:1,e:"The 4th step is evaluating alternatives against economic, control, and adaptive criteria."},
+    {q:"Integrated logistics management coordinates:",o:["Only inbound transport","Whole-channel logistics across the firm AND channel partners","Only retail operations","Only advertising"],a:1,e:"Integrated logistics = coordinating within the firm and with channel partners end-to-end."},
+    {q:"The U.S. Clayton Act addresses:",o:["Environmental regulations","Dealing contracts that may lessen competition","Product safety","Advertising truthfulness"],a:1,e:"The Clayton Act governs exclusionary dealing contracts that could substantially lessen competition."}
+  ]},
+  { id: 11, title: "Retailing & Wholesaling", subtitle: "The last mile to the consumer.", questions: [
+    {q:"Retailing is:",o:["Selling to resellers","Selling to manufacturers","All activities selling goods/services directly to final consumers for personal use","Only online selling"],a:2,e:"Retailing = directly to final consumers for personal, nonbusiness use."},
+    {q:"Shopper marketing focuses on:",o:["Upstream supply chain","Point-of-sale promotion and ads to influence in-store buying decisions","Mass media advertising","Distribution channels"],a:1,e:"Shopper marketing = 'last mile' POP efforts aimed at in-store, online, and mobile shopping."},
+    {q:"A retailer where customers locate, compare, and select products themselves is a:",o:["Full-service retailer","Limited-service retailer","Self-service retailer","Specialty store"],a:2,e:"Self-service = customers do their own locate-compare-select; lowest cost operation."},
+    {q:"A store with a NARROW product line but DEEP assortment is a:",o:["Department store","Specialty store","Supermarket","Convenience store"],a:1,e:"Specialty store = narrow + deep. Example: Foot Locker, Athleta."},
+    {q:"Macy's, which carries many product lines each as a separate department, is a:",o:["Specialty store","Department store","Supermarket","Superstore"],a:1,e:"Department store = wide variety of lines, each operated as a separate department."},
+    {q:"A large, low-cost, low-margin, high-volume store carrying grocery and household items is a:",o:["Convenience store","Supermarket","Category killer","Discount store"],a:1,e:"Supermarket definition verbatim from the text."},
+    {q:"A small store near residences, open long hours 7 days a week, carrying limited high-turnover goods:",o:["Department store","Convenience store","Specialty store","Warehouse club"],a:1,e:"Convenience store = the 7-Eleven model."},
+    {q:"A giant specialty store carrying very DEEP assortment of one product line is a:",o:["Supercenter","Category killer","Superstore","Department store"],a:1,e:"Category killer = Best Buy, Home Depot, Staples."},
+    {q:"Hotels, airlines, and colleges are examples of:",o:["Department retailers","Service retailers","Specialty stores","Supermarkets"],a:1,e:"Service retailers = the product line is actually a service."},
+    {q:"Discount stores sell:",o:["Premium goods at premium prices","Standard merchandise at lower prices/margins in return for higher volume","Only luxury goods","Only branded closeouts"],a:1,e:"Discount stores = Walmart, Target; standard goods, lower prices/margins, higher volumes."},
+    {q:"Costco is a(n):",o:["Factory outlet","Warehouse club","Department store","Specialty store"],a:1,e:"Warehouse club = limited selection, deep discounts to members paying annual fees."},
+    {q:"A manufacturer-owned off-price operation selling surplus/irregular goods is a:",o:["Factory outlet","Warehouse club","Supermarket","Superstore"],a:0,e:"Factory outlet = manufacturer-owned, normally carrying surplus/discontinued/irregular goods."},
+    {q:"Two+ outlets commonly owned and controlled is a:",o:["Franchise","Corporate chain","Voluntary chain","Retailer cooperative"],a:1,e:"Corporate chain = common ownership + control (Starbucks, Gap)."},
+    {q:"A wholesaler-sponsored group of independent retailers engaged in group buying is a:",o:["Corporate chain","Voluntary chain","Franchise","Cooperative"],a:1,e:"Voluntary chain = wholesaler-sponsored group buying arrangement for independents."},
+    {q:"A contractual association between a franchisor and independent franchisees is a:",o:["Corporate chain","Voluntary chain","Franchise","Department store"],a:2,e:"Franchise = contractual association (McDonald's, Subway, Holiday Inn)."},
+    {q:"Retailer marketing decisions include all EXCEPT:",o:["Segmentation and targeting","Store differentiation and positioning","Retail marketing mix","Product development"],a:3,e:"Retailers typically don't develop new products — they decide on segmentation, targeting, differentiation/positioning, and retail mix."},
+    {q:"Wholesaling is:",o:["Selling to final consumers","All activities selling to those who buy for resale or business use","Only done by manufacturers","A form of retail"],a:1,e:"Wholesaling = to resellers and business users (not final consumers)."},
+    {q:"Merchant wholesalers differ from agents and brokers because:",o:["Merchant wholesalers take title to goods","Agents take title","There's no difference","Brokers own the goods"],a:0,e:"Merchant wholesalers are independently owned and TAKE TITLE to goods. Agents and brokers do not take title."},
+    {q:"Manufacturers' sales branches and offices are:",o:["Brokers","Agents","Wholesaling operations by sellers themselves, not through independents","Retail stores"],a:2,e:"These are wholesaling operations conducted by sellers/buyers themselves, not by independent wholesalers."},
+    {q:"Retailer 'store atmosphere' falls under which retail marketing decision?",o:["Price","Product","Store differentiation/positioning","Place"],a:2,e:"Store atmosphere is a key store differentiation and positioning tool."}
+  ]},
+  { id: 12, title: "Advertising & Public Relations", subtitle: "Paid, nonpersonal communication and image-building.", questions: [
+    {q:"The promotion mix is the specific blend of:",o:["Products","Promotion tools used to communicate customer value and build relationships","Distribution channels","Prices"],a:1,e:"Promotion mix = the specific blend of promotion tools."},
+    {q:"Which is NOT one of the 5 major promotion tools?",o:["Advertising","Sales promotion","Personal selling","Market research"],a:3,e:"The 5 tools = advertising, sales promotion, personal selling, PR, and direct marketing."},
+    {q:"'Paid form of nonpersonal presentation by an identified sponsor' defines:",o:["Personal selling","Advertising","Public relations","Direct marketing"],a:1,e:"Advertising = paid + nonpersonal + identified sponsor. Those three words together uniquely identify advertising."},
+    {q:"'Short-term incentives to encourage purchase' defines:",o:["Advertising","Sales promotion","Personal selling","Public relations"],a:1,e:"Sales promotion = short-term incentives, strong but short-lived effects."},
+    {q:"The most expensive promotion tool per contact is:",o:["Advertising","Sales promotion","Personal selling","Public relations"],a:2,e:"Personal selling is the firm's most expensive promotion tool per customer contact."},
+    {q:"'Building good relations with various publics via favorable publicity' describes:",o:["Advertising","Direct marketing","Public relations","Sales promotion"],a:2,e:"PR = favorable publicity, corporate image, handling unfavorable rumors/events."},
+    {q:"Direct marketing is:",o:["Mass advertising","Direct connections with carefully targeted individual consumers","In-store promotion only","Trade shows only"],a:1,e:"Direct marketing = direct, targeted, interactive — seeking immediate response and lasting relationships."},
+    {q:"Integrated Marketing Communications (IMC) focuses on:",o:["Using only one channel","Integrating all communication channels for a clear, consistent, compelling message","Only digital channels","Only broadcast advertising"],a:1,e:"IMC = carefully integrating and coordinating all communication channels for a unified message."},
+    {q:"A PUSH strategy uses:",o:["Mass consumer advertising to pull product through channel","Trade promotion and sales force to push product through channels","Only PR","Only direct mail"],a:1,e:"Push strategy = sales force + trade promotion push the product to resellers, who push to consumers."},
+    {q:"A PULL strategy uses:",o:["Sales force pressure on retailers","Trade promotion discounts","Heavy consumer advertising creating demand that pulls product through channel","Cold calling"],a:2,e:"Pull strategy = consumer ads/promotion create a demand vacuum that pulls product through the channel."},
+    {q:"Advertising objectives classified by primary purpose are to inform, persuade, and:",o:["Compare","Remind","Demonstrate","Recommend"],a:1,e:"The three primary advertising purposes: inform, persuade, remind."},
+    {q:"INFORMATIVE advertising is MOST used when:",o:["Introducing a new-product category","Competition is heavy","Products are in decline","Products are mature"],a:0,e:"Informative ads are issued heavily when introducing a new product category — objective is to build PRIMARY demand."},
+    {q:"The objective of PERSUASIVE advertising is to build:",o:["Primary demand","Selective demand for a specific brand","Customer complaints","Only sales volume"],a:1,e:"Persuasive advertising builds SELECTIVE demand — preference for our brand over competitors'."},
+    {q:"Comparative (attack) advertising is a type of:",o:["Informative advertising","Persuasive advertising","Reminder advertising","Institutional advertising"],a:1,e:"Comparative advertising is a form of persuasive advertising that directly attacks competitors."},
+    {q:"REMINDER advertising is MOST important for:",o:["New products","Launch phase","Mature products","Declining products"],a:2,e:"Reminder advertising keeps mature products top-of-mind and maintains customer relationships."},
+    {q:"Setting an ad budget based on what the firm can afford is the:",o:["Affordable method","Percentage-of-sales method","Competitive-parity method","Objective-and-task method"],a:0,e:"Affordable method = set budget at what management thinks they can afford."},
+    {q:"Setting the ad budget by matching competitor spending is:",o:["Affordable method","Percentage-of-sales method","Competitive-parity method","Objective-and-task method"],a:2,e:"Competitive parity matches competitor spending levels."},
+    {q:"The most logical ad budget method — defining objectives and then costing out tasks — is:",o:["Affordable","Percentage-of-sales","Competitive parity","Objective-and-task"],a:3,e:"Objective-and-task ties the budget directly to specific marketing objectives."},
+    {q:"The three major factors in selecting advertising media are reach, frequency, and:",o:["Budget","Media impact","Creative","Circulation"],a:1,e:"Reach (how many), frequency (how often), and media impact (qualitative value) are the three media selection factors."},
+    {q:"Major PR tools include news, special events, written materials, audiovisual, and:",o:["Inventory management","Corporate identity materials","Product pricing","Sales territories"],a:1,e:"PR tools: news, special events, written materials, audiovisual, corporate identity materials, public service activities."}
+  ]},
+  { id: 13, title: "Personal Selling & Sales Promotion", subtitle: "Face-to-face relationships and short-term incentives.", questions: [
+    {q:"Personal selling is:",o:["Impersonal mass communication","Personal presentations by the sales force to make sales and build relationships","Mail-order marketing","Online marketing"],a:1,e:"Personal selling = personal (face-to-face or direct) presentations by the sales force."},
+    {q:"Salespeople represent:",o:["Only the company to customers","Only customers to the company","The two-way link between the company and customers","Only competitors"],a:2,e:"Salespeople are a two-way bridge — representing the company to customers and the customers back to the company."},
+    {q:"A sales force structure where each salesperson is assigned a specific geographic area is:",o:["Product sales force structure","Territorial sales force structure","Customer sales force structure","Complex structure"],a:1,e:"Territorial structure = one salesperson covers one geographic area exclusively."},
+    {q:"A sales structure where salespeople specialize in selling only a portion of the products:",o:["Territorial","Product","Customer","Complex"],a:1,e:"Product structure = salespeople specialize in specific products or product lines."},
+    {q:"Organizing salespeople along customer or industry lines is the:",o:["Territorial structure","Product structure","Customer (market) structure","Complex structure"],a:2,e:"Customer structure = specialists assigned to customer types or industries."},
+    {q:"Step 1 of the 7-step selling process is:",o:["Closing","Presentation","Prospecting and qualifying","Preapproach"],a:2,e:"Prospecting and qualifying = identifying potential customers and screening them."},
+    {q:"'Learning as much as possible about a prospective customer before calling' is:",o:["Prospecting","Preapproach","Approach","Presentation"],a:1,e:"Preapproach = research before the first interaction."},
+    {q:"'Handling objections' comes between which two steps?",o:["Approach and presentation","Presentation and closing","Closing and follow-up","Prospecting and preapproach"],a:1,e:"Order: prospect → preapproach → approach → presentation → handling objections → closing → follow-up."},
+    {q:"Asking for the order is which step?",o:["Presentation","Handling objections","Closing","Follow-up"],a:2,e:"Closing = the step where the salesperson asks for the order."},
+    {q:"Follow-up is important because it:",o:["Closes the sale","Ensures customer satisfaction and repeat business","Finds new prospects","Generates objections"],a:1,e:"Follow-up happens after the sale — to ensure satisfaction and build repeat business."},
+    {q:"Sales promotion refers to:",o:["Long-term advertising","Short-term incentives to encourage purchase/sale","Channel management","PR activities"],a:1,e:"Sales promotion = short-term incentives. Attracts attention, strong incentive, short-lived effects."},
+    {q:"Rapid growth of sales promotion is due to all EXCEPT:",o:["Pressure on product managers to increase sales","Competitors using it to differentiate","Declining advertising efficiency","Sales promotions building long-term brand loyalty"],a:3,e:"Sales promotions are short-lived and NOT very effective at building long-run brand preference. That's why they're used WITH other tools."},
+    {q:"Free trial amounts given to consumers are:",o:["Coupons","Samples","Rebates","Premiums"],a:1,e:"Samples = offers of a trial amount of a product."},
+    {q:"A price reduction that happens AFTER purchase via manufacturer refund is a:",o:["Coupon","Sample","Cash refund (rebate)","Price pack"],a:2,e:"Cash refund/rebate = post-purchase price reduction refunded by the manufacturer."},
+    {q:"Goods offered free or at low cost as an incentive to buy are:",o:["Coupons","Premiums","Samples","Price packs"],a:1,e:"Premiums = bonus items given free or cheap as a purchase incentive."},
+    {q:"Useful articles like pens and mugs imprinted with an advertiser's name are:",o:["Samples","Advertising specialties","Premiums","Coupons"],a:1,e:"Advertising specialties (promotional products) = useful articles imprinted with advertiser's name/logo/message."},
+    {q:"Sales promotion tools targeting RESELLERS to carry and push a brand are:",o:["Consumer promotions","Trade promotions","Business promotions","Direct marketing"],a:1,e:"Trade promotions target resellers — discounts, allowances, free goods, push money, specialty ads."},
+    {q:"'Push money' (spiffs) is:",o:["Consumer coupons","Cash payments to dealer salespeople to push a product","Rebates to consumers","Free samples"],a:1,e:"Push money = trade promotion tool. Cash payments to dealers' salespeople to motivate them to push the brand."},
+    {q:"Trade shows, conventions, and sales contests for salespeople are examples of:",o:["Consumer promotions","Trade promotions","Business promotions","PR tools"],a:2,e:"Business promotions = generate leads, stimulate purchases, reward customers, motivate salespeople."},
+    {q:"When developing a sales promotion program, marketers must decide on all EXCEPT:",o:["Size of incentive","Conditions for participation","Length of promotion","New product development"],a:3,e:"Sales promotion program decisions: size of incentive, conditions for participation, how to promote/distribute, length of promotion, evaluation. NPD is not a sales promotion decision."}
+  ]},
+  { id: 14, title: "Direct & Online Marketing", subtitle: "Targeted, one-to-one, interactive relationships.", questions: [
+    {q:"Direct marketing is:",o:["Mass advertising","Connecting directly with carefully targeted segments or individuals, often one-to-one and interactive","Selling only through retail stores","Wholesale distribution"],a:1,e:"Direct marketing = direct, targeted, one-to-one, interactive connections with consumers."},
+    {q:"For companies like GEICO and Amazon, direct marketing is:",o:["A minor complement to retail","A complete model for doing business","Used only for crisis communications","Only seasonal"],a:1,e:"For many companies, direct marketing IS the entire business model — not just a promotion tactic."},
+    {q:"Which is NOT a direct-marketing benefit to BUYERS?",o:["Convenience","Privacy","Immediate and interactive","Forced scheduling"],a:3,e:"Buyer benefits: convenient, easy, private, immediate/interactive, wealth of comparative info. There's nothing 'forced' about it."},
+    {q:"Which is a direct-marketing benefit to SELLERS?",o:["Lower costs and faster handling","Anonymous consumers","Mass-market reach only","Lower marketing flexibility"],a:0,e:"Seller benefits: builds relationships, low-cost & speedy, greater flexibility, access to buyers unreachable through other channels."},
+    {q:"A customer database is:",o:["A random collection of sales records","An organized collection of comprehensive data about individual customers — geographic, demographic, psychographic, behavioral","Only email addresses","Only competitor data"],a:1,e:"Customer database = comprehensive individual-level data used to fuel personalized, customer-triggered offers."},
+    {q:"Sending an offer directly to a person at a particular address is:",o:["Catalog marketing","Direct-mail marketing","Telemarketing","Kiosk marketing"],a:1,e:"Direct mail = to a specific person at a specific address. High selectivity, personalization, and easy measurement."},
+    {q:"Digital catalogs offer all EXCEPT:",o:["Unlimited merchandise","Broader presentation formats","Real-time merchandising","Physical mail delivery"],a:3,e:"Digital catalogs eliminate printing and mailing costs — the opposite of physical delivery."},
+    {q:"Using outbound calls to sell directly and toll-free inbound numbers to receive orders is:",o:["Direct mail","Telemarketing","DRTV","Kiosk marketing"],a:1,e:"Telemarketing = outbound sales + inbound order-taking via phone."},
+    {q:"Infomercials are a form of:",o:["Catalog marketing","Direct-response television (DRTV) marketing","Online marketing","Kiosk marketing"],a:1,e:"DRTV = direct-response television advertising (infomercials) plus interactive TV (iTV)."},
+    {q:"Redbox DVD rental machines placed in supermarkets and fast-food outlets are examples of:",o:["Kiosk marketing","DRTV","Direct mail","Online marketing"],a:0,e:"Kiosk marketing = product/service info and ordering machines placed in stores, airports, hotels, campuses."},
+    {q:"Online marketing is:",o:["Only email","Efforts to market products/services and build relationships over the Internet","Only social media","Only e-commerce"],a:1,e:"Online marketing = all Internet-based marketing efforts, broadly defined."},
+    {q:"A company operating only online with no physical stores is a:",o:["Click-and-mortar company","Click-only company","Brick-and-mortar company","Franchise company"],a:1,e:"Click-only companies = 'dot-coms' operating online only — e-tailers, search engines, portals, content sites, online social networks."},
+    {q:"A traditional retailer that has added online operations is a:",o:["Click-only company","Click-and-mortar company","Catalog-only company","Kiosk-only company"],a:1,e:"Click-and-mortar companies are traditional brick-and-mortar firms that added online marketing — Walmart, Target, Staples."},
+    {q:"Amazon selling directly to individuals is an example of:",o:["B2C","B2B","C2C","C2B"],a:0,e:"B2C = Business-to-Consumer; business sells online directly to consumers."},
+    {q:"Cisco selling to other businesses online is:",o:["B2C","B2B","C2C","C2B"],a:1,e:"B2B = Business-to-Business online selling."},
+    {q:"eBay and Craigslist transactions among individuals are:",o:["B2C","B2B","C2C","C2B"],a:2,e:"C2C = Consumer-to-Consumer online exchange."},
+    {q:"Priceline.com, where consumers name prices and businesses accept or reject, is:",o:["B2C","B2B","C2C","C2B"],a:3,e:"C2B = Consumer-to-Business. The consumer INITIATES the exchange by naming a price; the business decides whether to accept."},
+    {q:"Setting up online marketing includes all EXCEPT:",o:["Creating a website","Placing online ads and promotions","Creating/participating in online communities","Eliminating all privacy concerns"],a:3,e:"Online marketing involves websites, online ads, email, social media/communities, mobile marketing — privacy concerns can be managed but never eliminated."},
+    {q:"A major public policy issue in direct marketing is:",o:["Excess charity","Consumer privacy and deception","Product quality","Environmental protection"],a:1,e:"Direct marketing raises privacy, fraud, deception, and irritation concerns."},
+    {q:"The Do Not Call Registry directly addresses concerns about:",o:["Direct mail spam","Telemarketing intrusion","Online privacy","Email spam"],a:1,e:"The Do Not Call Registry targets telemarketing. CAN-SPAM addresses email spam."}
+  ]}
+];
+
+/* ============ STATE ============ */
+let currentChapterIdx = -1;          // -1 = home
+let userAnswers = {};                 // { chapterIdx: [null, 0, 2, ...] }
+let submittedChapters = new Set();    // indices of chapters submitted
+let chapterScores = {};               // { chapterIdx: correctCount }
+
+/* ============ RENDER TABS ============ */
+const tabsEl = document.getElementById('chapterTabs');
+CHAPTERS.forEach((ch, idx) => {
+  const t = document.createElement('div');
+  t.className = 'ctab';
+  t.innerHTML = `<span class="num">${String(ch.id).padStart(2,'0')}</span><span>${ch.title.split(' ').slice(0,2).join(' ')}…</span><span class="dot"></span>`;
+  t.title = ch.title;
+  t.addEventListener('click', () => selectChapter(idx));
+  tabsEl.appendChild(t);
+});
+
+/* ============ LETTERS ============ */
+const letters = ['A','B','C','D'];
+
+/* ============ RENDER CHAPTER ============ */
+function selectChapter(idx) {
+  currentChapterIdx = idx;
+  const ch = CHAPTERS[idx];
+
+  // initialize answer array for this chapter if not already
+  if (!userAnswers[idx]) userAnswers[idx] = new Array(20).fill(null);
+
+  // update tab state
+  document.querySelectorAll('.ctab').forEach((t, i) => t.classList.toggle('active', i === idx));
+
+  // hide hero
+  document.getElementById('heroSection').style.display = 'none';
+
+  // show controls
+  document.getElementById('controls').style.display = 'flex';
+
+  // render chapter
+  const content = document.getElementById('chapterContent');
+  const submitted = submittedChapters.has(idx);
+  const userAns = userAnswers[idx];
+
+  content.innerHTML = `
+    <div class="chapter-head">
+      <div class="ch-num">${String(ch.id).padStart(2,'0')}</div>
+      <div class="ch-meta">
+        <div class="ch-label">CHAPTER ${ch.id} · 20 QUESTIONS</div>
+        <div class="ch-name display">${ch.title}</div>
+        <div class="ch-subject">${ch.subtitle}</div>
+      </div>
+      <div class="ch-progress">
+        <span class="big"><b>${submitted ? chapterScores[idx] : userAns.filter(a => a !== null).length}</b>/20</span>
+        ${submitted ? 'SCORE' : 'ANSWERED'}
+      </div>
+    </div>
+    <div id="questionsWrap"></div>
+  `;
+
+  const wrap = document.getElementById('questionsWrap');
+  ch.questions.forEach((q, qi) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    const selected = userAns[qi];
+    div.innerHTML = `
+      <div class="q-num">
+        <span>Q${String(qi+1).padStart(2,'0')} · CH ${ch.id}</span>
+        <span class="status">${submitted ? (selected === q.a ? '✓ CORRECT' : '✗ INCORRECT') : (selected !== null ? '◉ ANSWERED' : '○ UNANSWERED')}</span>
+      </div>
+      <div class="q-text">${q.q}</div>
+      <div class="options">
+        ${q.o.map((opt, oi) => {
+          let cls = 'option';
+          if (submitted) {
+            if (oi === q.a) cls += ' correct';
+            else if (oi === selected) cls += ' incorrect';
+          } else if (selected === oi) {
+            cls += ' selected';
+          }
+          return `<button class="${cls}" data-q="${qi}" data-o="${oi}" ${submitted ? 'disabled' : ''}>
+            <span class="letter">${letters[oi]}</span><span>${opt}</span>
+          </button>`;
+        }).join('')}
+      </div>
+      <div class="explanation ${submitted ? 'show' : ''}">
+        <span class="explain-label">EXPLANATION · ANSWER ${letters[q.a]}</span>
+        ${q.e}
+      </div>
+    `;
+    wrap.appendChild(div);
+  });
+
+  // attach click listeners
+  wrap.querySelectorAll('.option').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (submittedChapters.has(currentChapterIdx)) return;
+      const qi = parseInt(btn.dataset.q);
+      const oi = parseInt(btn.dataset.o);
+      userAnswers[currentChapterIdx][qi] = oi;
+      // update just this question's option visuals
+      wrap.querySelectorAll(`.option[data-q="${qi}"]`).forEach((b, i) => {
+        b.classList.toggle('selected', i === oi);
+      });
+      // update status and count
+      const parent = btn.closest('.question');
+      parent.querySelector('.q-num .status').textContent = '◉ ANSWERED';
+      updateCounters();
+    });
+  });
+
+  // buttons state
+  document.getElementById('submitBtn').style.display = submitted ? 'none' : 'inline-block';
+  document.getElementById('resetBtn').style.display = submitted ? 'inline-block' : 'none';
+  document.getElementById('nextChapterBtn').style.display = (submitted && idx < CHAPTERS.length - 1) ? 'inline-block' : 'none';
+
+  // hide results panel on chapter change
+  document.getElementById('results').classList.remove('show');
+
+  updateCounters();
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+/* ============ COUNTERS ============ */
+function updateCounters() {
+  // current chapter answered count
+  if (currentChapterIdx >= 0 && !submittedChapters.has(currentChapterIdx)) {
+    const count = userAnswers[currentChapterIdx].filter(a => a !== null).length;
+    document.getElementById('selectedCount').textContent = count;
+    // update progress block in header
+    const head = document.querySelector('.ch-progress .big b');
+    if (head) head.textContent = count;
+  }
+  // global stats
+  let totalAnswered = 0, totalCorrect = 0;
+  Object.keys(userAnswers).forEach(ci => {
+    userAnswers[ci].forEach((a, qi) => {
+      if (a !== null) totalAnswered++;
+      if (submittedChapters.has(parseInt(ci)) && a === CHAPTERS[ci].questions[qi].a) totalCorrect++;
+    });
+  });
+  document.getElementById('statAnswered').textContent = totalAnswered;
+  document.getElementById('statCorrect').textContent = totalCorrect;
+  document.getElementById('statChapters').textContent = submittedChapters.size;
+
+  // update tab done states
+  document.querySelectorAll('.ctab').forEach((t, i) => {
+    t.classList.toggle('done', submittedChapters.has(i));
+  });
+}
+
+/* ============ SUBMIT ============ */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  if (currentChapterIdx < 0) return;
+  const ch = CHAPTERS[currentChapterIdx];
+  const userAns = userAnswers[currentChapterIdx];
+  let score = 0;
+  ch.questions.forEach((q, qi) => { if (userAns[qi] === q.a) score++; });
+  chapterScores[currentChapterIdx] = score;
+  submittedChapters.add(currentChapterIdx);
+
+  // show results
+  const pct = Math.round((score / 20) * 100);
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('rCorrect').textContent = score;
+  document.getElementById('rWrong').textContent = 20 - score;
+  document.getElementById('rPct').textContent = pct + '%';
+
+  let msg = '';
+  if (pct >= 90) msg = 'Outstanding. You own this chapter — move to the next one.';
+  else if (pct >= 75) msg = 'Solid. Review the ones you missed and you\'re golden.';
+  else if (pct >= 60) msg = 'Good foundation. Read the explanations carefully and retake when ready.';
+  else msg = 'Time to dig back into this chapter. Read the explanations, then re-take.';
+  document.getElementById('scoreMsg').textContent = msg;
+  document.getElementById('results').classList.add('show');
+
+  // re-render chapter to show correct/incorrect
+  selectChapter(currentChapterIdx);
+
+  // scroll to results
+  setTimeout(() => document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+});
+
+/* ============ RESET ============ */
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (currentChapterIdx < 0) return;
+  userAnswers[currentChapterIdx] = new Array(20).fill(null);
+  submittedChapters.delete(currentChapterIdx);
+  delete chapterScores[currentChapterIdx];
+  document.getElementById('results').classList.remove('show');
+  selectChapter(currentChapterIdx);
+});
+
+/* ============ NEXT CHAPTER ============ */
+document.getElementById('nextChapterBtn').addEventListener('click', () => {
+  if (currentChapterIdx < CHAPTERS.length - 1) {
+    selectChapter(currentChapterIdx + 1);
+  }
+});
+
+/* ============ INITIAL STATE ============ */
+updateCounters();
+</script>
+
+</body>
+</html>
